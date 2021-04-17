@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Better Square",
+  "version": "0.1",
+  "background.service_worker": {
+    "scripts": [
+      "hot-reload.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://campusweb.office.uec.ac.jp/campusweb/campussquare.do*"
+      ],
+      "js": [
+        "campus.js"
+      ],
+      "all_frames": true
+    }
+  ]
+}
