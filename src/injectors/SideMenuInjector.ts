@@ -1,5 +1,6 @@
 import { InjectorBase } from "./InjectorBase";
 import { ROOT_PATH_KEY, SUB_PATH_QUERY_KEY } from "./RootInjector";
+import { getRootPath } from "./utils";
 
 const overrideTitleBar = () => {
   const titleBar = document.querySelector(
@@ -13,7 +14,6 @@ const overrideTitleBar = () => {
   titleBar.appendChild(additional);
 };
 
-const getRootPath = (): string => localStorage.getItem(ROOT_PATH_KEY);
 const getSubPath = (url: URL): string | null =>
   url.searchParams.get(SUB_PATH_QUERY_KEY);
 
