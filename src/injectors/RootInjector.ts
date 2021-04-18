@@ -16,6 +16,7 @@ const injectFrames = () => {
         const url = new URL(location.href);
         url.searchParams.set(SUB_PATH_QUERY_KEY, detail);
         history.pushState({}, "", url.toString());
+        setRootPath();
       }
     );
     contentWindow.addEventListener(REQUEST_RELOAD_EVENT, () =>
