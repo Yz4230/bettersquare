@@ -1,5 +1,5 @@
 import { InjectorBase } from "./InjectorBase";
-import { ROOT_PATH_KEY, SUB_PATH_QUERY_KEY } from "./RootInjector";
+import { SET_PATH_EVENT, SUB_PATH_QUERY_KEY } from "../constants";
 import { getRootPath } from "./utils";
 
 const overrideTitleBar = () => {
@@ -31,7 +31,9 @@ const injectButtons = () => {
   document.querySelectorAll('a[href="#"] .menufunc').forEach((el) => {
     const buttonName = el.getAttribute("title");
     el.addEventListener("click", () => {
-      window.dispatchEvent(new CustomEvent("setPath", { detail: buttonName }));
+      window.dispatchEvent(
+        new CustomEvent(SET_PATH_EVENT, { detail: buttonName })
+      );
     });
   });
 };
