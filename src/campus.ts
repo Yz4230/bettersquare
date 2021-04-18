@@ -1,3 +1,4 @@
+import { HeaderInjector } from "./injectors/HeaderInjector";
 import { InjectorBase } from "./injectors/InjectorBase";
 import { RootInjector } from "./injectors/RootInjector";
 import { SideMenuInjector } from "./injectors/SideMenuInjector";
@@ -6,6 +7,7 @@ import { TopMenuInjector } from "./injectors/TopMenuInjector";
 
 const injectors: InjectorBase[] = [
   new RootInjector(),
+  new HeaderInjector(),
   new SideMenuInjector(),
   new TopMenuInjector(),
   new SyllabusInjector(),

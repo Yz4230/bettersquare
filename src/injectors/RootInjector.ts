@@ -15,6 +15,7 @@ const injectFrames = () => {
         history.pushState({}, "", url.toString());
       }
     );
+    contentWindow.addEventListener("requestReload", () => location.reload());
   });
 };
 
