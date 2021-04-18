@@ -1,8 +1,8 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Better Square",
   "version": "0.1",
-  "background.service_worker": {
+  "background": {
     "scripts": [
       "hot-reload.js"
     ]
@@ -17,5 +17,8 @@
       ],
       "all_frames": true
     }
+  ],
+  "permissions": [
+    "management"
   ]
 }

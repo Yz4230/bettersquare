@@ -19,10 +19,10 @@ const injectSideMenu = () => {
 };
 
 const injectMainContent = () => {
-  for (const anchor of document.querySelectorAll("a")) {
-    anchor.target = "_blank";
-    anchor.rel = "noopener";
-  }
+  document.querySelectorAll("a").forEach((a) => {
+    a.target = "_blank";
+    a.rel = "noopener";
+  });
 };
 
 if (document.querySelector('body > form[name="TopForm"]')) injectHeader();

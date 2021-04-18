@@ -9,9 +9,16 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crx-hotreload": "^1.0.6",
     "prettier": "^2.2.1"
   },
   "devDependencies": {
-    "eslint": "^7.24.0"
+    "@types/chrome": "^0.0.134",
+    "copy-webpack-plugin": "^8.1.1",
+    "eslint": "^7.24.0",
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.4",
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
   }
 }
