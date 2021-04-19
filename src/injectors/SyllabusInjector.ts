@@ -11,6 +11,27 @@ const saveToLocalStorage = (key: string, value: string) => {
   localStorage.setItem(LAST_INPUT_KEY, JSON.stringify(lastInput));
 };
 
+const restoreInputs = () => {
+  const inputs = document.querySelectorAll("input, select");
+  const lastInput = getLastInput();
+  inputs.forEach((el: HTMLInputElement | HTMLSelectElement) => {
+    if (el.name === "" || el.name.startsWith("_")) return;
+    if (el.name in lastInput) el.value = lastInput[el.name];
+    el.addEventListener("change", () => saveToLocalStorage(el.name, el.value));
+  });
+};
+
+const injectClearButton = () => {
+  const clearButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll(
+    'input[type="reset"]'
+  );
+  clearButtons.forEach((el) =>
+    el.addEventListener("click", () => {
+      localStorage.setItem(LAST_INPUT_KEY, "{}");
+    })
+  );
+};
+
 export class SyllabusInjector extends InjectorBase {
   match() {
     return (
@@ -20,23 +41,7 @@ export class SyllabusInjector extends InjectorBase {
     );
   }
   run() {
-    const inputs = document.querySelectorAll("input, select");
-    const lastInput = getLastInput();
-    inputs.forEach((el: HTMLInputElement | HTMLSelectElement) => {
-      if (el.name === "" || el.name.startsWith("_")) return;
-      if (el.name in lastInput) el.value = lastInput[el.name];
-      el.addEventListener("change", () =>
-        saveToLocalStorage(el.name, el.value)
-      );
-    });
-
-    const clearButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll(
-      'input[type="reset"]'
-    );
-    clearButtons.forEach((el) =>
-      el.addEventListener("click", () => {
-        localStorage.setItem(LAST_INPUT_KEY, "{}");
-      })
-    );
+    restoreInputs();
+    injectClearButton();
   }
 }
